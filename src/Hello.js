@@ -41,6 +41,7 @@ const MenuProps = {
 };
 
 const names = [
+  "All", 
   "Oliver Hansen",
   "Van Henry",
   "April Tucker",
@@ -59,7 +60,23 @@ class MultipleSelect extends React.Component {
   };
 
   handleChange = event => {
-    this.setState({ name: event.target.value });
+
+    var clickedItem = event.currentTarget.attributes['data-value'].nodeValue
+    var selectedItems = event.target.value
+    if (clickedItem === 'All'){
+      if (selectedItems.length < names.length-1){
+      this.setState({name: names});
+      } else {
+        this.setState({name: []});
+      }
+    }
+    else {
+      var index = selectedItems.indexOf('All');
+      if(index > -1){
+        selectedItems.splice(index,1)
+      }
+      this.setState({ name: selectedItems });
+    }
   };
 
   handleDelete = data => () => {
