@@ -85,7 +85,7 @@ class MultipleSelect extends React.Component {
           selectedItems.splice(index, 1)
         }
 
-        if(event.shiftKey & this.state.lastChecked){
+        if(event.shiftKey && this.state.lastChecked){
             var startIndex = names.indexOf(this.state.lastChecked);
             var endIndex = names.indexOf(clickedItem);
             selectedItems = selectedItems.concat(names.slice(startIndex, endIndex))
