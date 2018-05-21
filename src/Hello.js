@@ -104,6 +104,10 @@ class MultipleSelect extends React.Component {
       } else {
         const chipToDelete = chipData.indexOf(data);
         chipData.splice(chipToDelete, 1);
+        const allIndex = chipData.indexOf('All');
+        if(allIndex > -1){
+          chipData.splice(allIndex, 1)
+        }
         this.setState({
           name: chipData
         });
